@@ -90,7 +90,7 @@ int main(int argc, char** argv)
         ![Image](IncludeDirectories.PNG)
 
     5. Under "Linker" on the left side menu (*AS win32 PLATFORM SELECTED*):
-        * Click the box -> Edit -> and add `<freeglut download folder>\freeglut\lib\`. Click OK and then Apply.
+        * Click "Additional Library Directories" the box -> Edit -> and add `<freeglut download folder>\freeglut\lib\`. Click OK and then Apply.
         * Change the Platform (at the top of the properties window) to x64, and repeat, EXCEPT go into the x64 folder this time.
         * It should look something like this for x64:
         ![Libs](AddLibDir.PNG)
