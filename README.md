@@ -68,7 +68,7 @@ int main(int argc, char** argv)
 * **This setup process could be easier by copying the FreeGLUT files to the respected directories, but this is also harder to undo or change when another update for FreeGLUT comes. This setup means that this configuration is SLN specific - to copy this configuration for future projects, copy this folder and use it as a base for future projects.**
 
     1. In "Solution Explorer", highlight the project file:
-    ![Image](sln-vs-projx.png)
+    ![Image](sln-vs-projx.PNG)
 
     2. Right click that and click properties
 
@@ -80,25 +80,25 @@ int main(int argc, char** argv)
         * Change the Platform (at the top of the properties window) to x64, and repeat.
         * Now, the `#include <freeglut.h>` line in your file should no longer show the red squiggly underneath.
         * It should look something similar to this (for both Win32 and x64)
-        ![Image](IncludeDirectories.png)
+        ![Image](IncludeDirectories.PNG)
 
     5. Under "Linker" on the left side menu (*AS win32 PLATFORM SELECTED*):
         * Click the box -> Edit -> and add `<freeglut download folder>\freeglut\lib\`. Click OK and then Apply.
         * Change the Platform (at the top of the properties window) to x64, and repeat, EXCEPT go into the x64 folder this time.
         * It should look something like this for x64:
-        ![Libs](AddLibDir.png)
+        ![Libs](AddLibDir.PNG)
         * Close the properties window.
 
     6. Finally, add the dll's to the project:
         * Open up File explorer, and go to the FreeGLUT download folder, and go to `freeglut\bin`
         * Drag that file into the VisualStudio Window, right on top of your project file. The arrow points to that file:
-        ![sln-projx](sln-vs-projx.png)
+        ![sln-projx](sln-vs-projx.PNG)
         * It will look like this:
-        ![dll2](dll2.png)
+        ![dll2](dll2.PNG)
         * It should NOT look like this:
-        ![dll](dll1.png)
+        ![dll](dll1.PNG)
         * Select that dll, right click, and select Properties.
-        * Change Platform at the top of this window to Win32! Change "Exclude From Build" to No, AND "Content" to Yes. Click Apply. 
+        * Change Platform at the top of this window to Win32! Change "Exclude From Build" to No, AND "Content" to Yes. Click Apply.
         * While on this file, Change the platform to x64. Change "Excluded From Build" to Yes. This hides the 32bit dll from the 64bit configuration.
         * Close the Properties window, and at the top of the VisualStudio screen, next to the "Debug" or Play button dropdown, change the build to x64. There should be a disabled icon on that dll.
 
