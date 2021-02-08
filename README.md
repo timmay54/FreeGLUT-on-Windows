@@ -69,9 +69,9 @@ int main(int argc, char** argv)
 
 4. Fix CLASSPATH/Dependency errors
 
-* You will notice that the glut references are erroring. Lets fix that.
+* You will notice that the glut references are erroring. Let's fix that.
 
-* **This setup process could be easier by copying the FreeGLUT files to the respected directories, but this is also harder to undo or change when another update for FreeGLUT comes. This setup means that this configuration is SLN specific - to copy this configuration for future projects, copy this folder and use it as a base for future projects.**
+* **This setup process could be easier by copying the FreeGLUT files to the respected directories, but this is also harder to undo or change when another update for FreeGLUT comes. This setup means that this configuration is SLN specific - to copy this configuration for future projects, copy this project folder (When complete) and use it as a base for future projects.**
 
     1. In "Solution Explorer", highlight the project file (Not the SLN file):
         * ![Image](sln-vs-projx.PNG)
@@ -80,7 +80,8 @@ int main(int argc, char** argv)
 
     3. Ensure that the top selections show "All Configurations" and "Win32" (it might say "Active(Win32) if your VisualStudio window has x86 selected at the top"). FYI, VisualStudio will directly compile your code to the architecture you select; x86 compiles a 32bit application and x64 compiles to 64bit. We are about to configure this Soultion (SLN) to use the 32bit resources for the 32bit exe, and the 64bit resources when compiling the 64bit exe.
 
-    4. Under "C/C++":
+    4. Under "C/C++" dropdown:
+        * Click General
         * Click "Additional Include Directories"
         * Add (edit) `<where you downloaded & extracted FreeGlut>\freeglut\include\GL`. Click OK and then Apply.
         * Change the Platform (at the top of the properties window) to x64, and repeat.
