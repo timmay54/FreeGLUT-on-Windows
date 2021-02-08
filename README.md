@@ -1,20 +1,25 @@
 ## Walkthrough for working with Glut and OpenGL on Windows 10
 
 ### Sanity check:
-    * Latest drivers for your machine installed?
+Before getting started, here are some items to look at:
+* Latest drivers for your machine installed?
     * If you have integrated graphics (i5 or related CPU's, some AMD models) double check that they are up to date
-    * Blender installed? Best check to see if OpenGL is working, open Blender (OpenGL DOES NOT WORK over RDP. If you use a computer remotely, you will need to use some crazy work arounds - NoMachine, Parsec, worse options would be VNC or TeamViewer)
+* Blender installed? Best check to see if OpenGL is working, open Blender
+    * OpenGL DOES NOT WORK over RDP. If Blender opens, you are set.
+    * If you use a computer remotely, you will need to use some crazy work arounds.
+    * NoMachine, Parsec, worse options would be VNC or TeamViewer
 
 1. Install Visual Studio 2019 (at least 2017 if you already have it)
-    * Want to explore Windows automation? Try using [Chocolatey](https://chocolatey.org/install)
-    * Otherwise, go [here](https://visualstudio.microsoft.com/downloads/) and download the community package (you can upgrade later)
-    Once it's installed, you'll need to check these boxes:
-    Just the C++, you can install others, but its HUGE, and will get confusing when choosing a project type.
+    * Want to explore Windows automation? Try using [Chocolatey](https://chocolatey.org/install) `choco install -y visualstudio-community`
+    * Otherwise, go [here](https://visualstudio.microsoft.com/downloads/) and download the community package (you can upgrade to Pro later).
+    * Once it's installed, you'll need to check these boxes:
+    ![vscommunity](vscommunityextras.PNG)
+    * Just the C++, you can install others, but its HUGE, and will get confusing when choosing a project type.
 
 2. Download Glut
     This Writeup will use FreeGLUT, an open source project that keeps GLUT up to date
-    * Downloaded THE COMPILED VERSION [here](https://www.transmissionzero.co.uk/files/software/development/GLUT/freeglut-MSVC.zip)
-    * You could download the source code and compile yourself, but this is simpler (someone else compiled it and uploaded the files).
+    * Downloaded THE COMPILED VERSION [here](https://www.transmissionzero.co.uk/files/software/development/GLUT/freeglut-MSVC.zip).
+    * You could download the source code and compile yourself, but this is simpler (someone else compiled it and uploaded the binaries).
     * Remember where you download and extract it to; I simply unzipped it in the Downloads folder.
 
 
@@ -67,8 +72,8 @@ int main(int argc, char** argv)
 
 * **This setup process could be easier by copying the FreeGLUT files to the respected directories, but this is also harder to undo or change when another update for FreeGLUT comes. This setup means that this configuration is SLN specific - to copy this configuration for future projects, copy this folder and use it as a base for future projects.**
 
-    1. In "Solution Explorer", highlight the project file:
-    ![Image](sln-vs-projx.PNG)
+    1. In "Solution Explorer", highlight the project file (Not the SLN file):
+        * ![Image](sln-vs-projx.PNG)
 
     2. Right click that and click properties
 
@@ -108,7 +113,7 @@ int main(int argc, char** argv)
         * At the top of this properties windpw, select platform "Win32". Change "Excluded From Build" to Yes. Click Apply.
         * Change the platform back to x64. Change "Excluded From Build" to No, AND "Content" to Yes. Click apply.
 
-    8. Test it out
+5. Test it out
         * When you change between x64 and x86 at the top, the two different DLL's should toggle, one will always be disabled, and the other will be enabled
         * Run the test code on x86, and again with x64 selected. Both should show a triangle in the screen.
 
@@ -117,6 +122,13 @@ int main(int argc, char** argv)
 
 
 ## Miscellaneous
+Some of these links were helpful, but some wanted to install GLEW or use bad strategies to get the CLASSPATH items configured.
 https://www.quora.com/How-do-I-include-header-files-in-visual-C++-to-a-given-source-file
 https://www.absingh.com/opengl/
 http://www.codebind.com/linux-tutorials/install-opengl-ubuntu-linux/
+
+* There might be fewer items needed to select during the install of VisualStudio, which would make it easier on hard drive space.
+
+* It is also okay to copy the FreeGLUT items into your project, it is just complicated to explain how to do that outside of VisualStudio
+
+* *I also have this working on Ubuntu in VSCode. Reach out if you would like that tutorial too!*
