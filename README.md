@@ -18,7 +18,8 @@ Before getting started, here are some items to look at:
 
 2. Download Glut
     This Writeup will use FreeGLUT, an open source project that keeps GLUT up to date
-    * Downloaded THE COMPILED VERSION [here](https://www.transmissionzero.co.uk/files/software/development/GLUT/freeglut-MSVC.zip).
+    * Downloaded THE COMPILED VERSION [here](https://www.transmissionzero.co.uk/software/freeglut-devel/).
+    * Click the "MSVC" Download.
     * You could download the source code and compile yourself, but this is simpler (someone else compiled it and uploaded the binaries).
     * Remember where you download and extract it to; I simply unzipped it in the Downloads folder.
 
