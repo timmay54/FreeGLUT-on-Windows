@@ -32,7 +32,7 @@ Before getting started, here are some items to look at:
         * Project Type: "Console Application"
         * Select the defaults, and then click Create
 
-    2. There will not be any files, so you will need to create one (main.cpp)
+    2. A C++ file will generate under the "Source Files" object. You can delete the contents of this file or:
         * locate the "Solution Explorer" window
         * right click "Source Files" -> Add -> New Item; select C++ File, and give it a name at the bottom of that window.
         * Sample code to paste into the new file you created:
