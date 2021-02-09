@@ -7,7 +7,10 @@ Before getting started, here are some items to look at:
 * Blender installed? Best check to see if OpenGL is working, open Blender
     * OpenGL DOES NOT WORK over RDP. If Blender opens, you are set.
     * If you use a computer remotely, you will need to use some crazy work arounds.
-    * NoMachine, Parsec, worse options would be VNC or TeamViewer
+    * Example work arounds would be NoMachine, Parsec, worse options would be VNC or TeamViewer
+
+**READ ALL STEPS CAREFULLY**
+*This was written by someone familiar with VisualStudio, and familiar with the differences between 32 and 64 bit compilation. The last few steps might not make sense, but the explanation is mention in this writeup, so curious minds can have an answer to what is going on. If something does not make sense, create an incident in this Repository, I get immediate notifications through Redmine for GitHub Issues.*
 
 1. Install Visual Studio 2019 (at least 2017 if you already have it)
     * Want to explore Windows automation? Try using [Chocolatey](https://chocolatey.org/install) `choco install -y visualstudio-community`
@@ -26,7 +29,7 @@ Before getting started, here are some items to look at:
 
 3. Create a Project
     1. At the VisualStudio main screen, click "Create new project"
-        * Project Type: "Windows Console Application"
+        * Project Type: "Console Application"
         * Select the defaults, and then click Create
 
     2. There will not be any files, so you will need to create one (main.cpp)
@@ -98,7 +101,7 @@ int main(int argc, char** argv)
 
     6. Finally, add the dll's to the project:
         * Open up File explorer, and go to the FreeGLUT download folder, and go to `freeglut\bin`
-        * Drag that file into the VisualStudio Window, right on top of your project file. The arrow points to that file:
+        * Drag the dll file (NOT THE x64 FOLDER) into the VisualStudio Window, right on top of your project file. The arrow points to that file:
         ![sln-projx](sln-vs-projx.PNG)
         * It will look like this:
         ![dll2](dll2.PNG)
@@ -106,21 +109,20 @@ int main(int argc, char** argv)
         ![dll](dll1.PNG)
         * Select that dll, right click, and select Properties.
         * Change Platform at the top of this window to Win32! Change "Exclude From Build" to No, AND "Content" to Yes. Click Apply.
-        * While on this file, Change the platform to x64. Change "Excluded From Build" to Yes. This hides the 32bit dll from the 64bit configuration.
+        * While editing the properties this file, Change the platform to x64. Change "Excluded From Build" to Yes. This hides the 32bit dll from the 64bit configuration.
         * Close the Properties window, and at the top of the VisualStudio screen, next to the "Debug" or Play button dropdown, change the build to x64. There should be a disabled icon on that dll.
 
     7. One last time...
         * Go to `<freeglut download folder>\freeglut\bin\x64`, and drag this DIFFERENT dll file over the project file like you did before for the above instructions.
-        * Highlight it, then right click, and select properties.
-        * At the top of this properties windpw, select platform "Win32". Change "Excluded From Build" to Yes. Click Apply.
+        * Highlight it (The one that you DID NOT JUST DISABLE), then right click, and select properties.
+        * At the top of this properties window, select platform "Win32". Change "Excluded From Build" to Yes. Click Apply.
         * Change the platform back to x64. Change "Excluded From Build" to No, AND "Content" to Yes. Click apply.
+
+    8.
 
 5. Test it out
         * When you change between x64 and x86 at the top, the two different DLL's should toggle, one will always be disabled, and the other will be enabled
         * Run the test code on x86, and again with x64 selected. Both should show a triangle in the screen.
-
-
-
 
 
 ## Miscellaneous
