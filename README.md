@@ -10,7 +10,7 @@ Before getting started, here are some items to look at:
     * Example work arounds would be NoMachine, Parsec, worse options would be VNC or TeamViewer
 
 **READ ALL STEPS CAREFULLY**
-*This was written by someone familiar with VisualStudio, and familiar with the differences between 32 and 64 bit compilation. The last few steps might not make sense, but the explanation is mention in this writeup, so curious minds can have an answer to what is going on. If something does not make sense, create an incident in this Repository, I get immediate notifications through Redmine for GitHub Issues.*
+*This was written by someone familiar with VisualStudio, and familiar with the differences between 32 and 64 bit compilation. The last few steps might not make sense due to this, but the explanation for most steps are mentioned in this writeup, so curious minds can have an answer to what is going on. If something does not make sense, create an incident in this Repository, I get immediate notifications through Redmine for GitHub Issues.*
 
 1. Install Visual Studio 2019 (at least 2017 if you already have it)
     * Want to explore Windows automation? Try using [Chocolatey](https://chocolatey.org/install) `choco install -y visualstudio-community`
