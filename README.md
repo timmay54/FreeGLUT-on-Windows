@@ -20,7 +20,8 @@ Before getting started, here are some items to look at:
     * Just the C++, you can install others, but its HUGE, and will get confusing when choosing a project type.
 
 2. Download Glut
-    This Writeup will use FreeGLUT, an open source project that keeps GLUT up to date
+
+    This Writeup will use FreeGLUT, an open source project that keeps GLUT up to date.
     * Downloaded THE COMPILED VERSION [here](https://www.transmissionzero.co.uk/software/freeglut-devel/).
     * Click the "MSVC" Download.
     * You could download the source code and compile yourself, but this is simpler (someone else compiled it and uploaded the binaries).
@@ -81,20 +82,22 @@ int main(int argc, char** argv)
 
     2. Right click that and click properties
 
-    3. Ensure that the top selections show "All Configurations" and "Win32" (it might say "Active(Win32) if your VisualStudio window has x86 selected at the top"). FYI, VisualStudio will directly compile your code to the architecture you select; x86 compiles a 32bit application and x64 compiles to 64bit. We are about to configure this Soultion (SLN) to use the 32bit resources for the 32bit exe, and the 64bit resources when compiling the 64bit exe.
+    3. Ensure that the top selections show "All Configurations" and "Win32" (it might say "Active(Win32) if your VisualStudio window has x86 selected at the top").
+
+    **FYI, VisualStudio will directly compile your code to the architecture you select; x86 compiles a 32bit application and x64 compiles to 64bit. We are about to configure this Soultion (SLN) to use the 32bit resources for the 32bit exe, and the 64bit resources when compiling the 64bit exe. This means that you will be able to compile 32bit and 64bit applications.**
 
     4. Under "C/C++" dropdown:
         * Click General
         * Click "Additional Include Directories"
         * Add (edit) `<where you downloaded & extracted FreeGlut>\freeglut\include\GL`. Click OK and then Apply.
-        * Change the Platform (at the top of the properties window) to x64, and repeat.
+        * Change the Platform (at the top of the properties window) to x64, and repeat, using the same path mentioned above.
         * Now, the `#include <freeglut.h>` line in your file should no longer show the red squiggly underneath.
         * It should look something similar to this (for both Win32 and x64)
         ![Image](IncludeDirectories.PNG)
 
     5. Under "Linker" on the left side menu (*AS win32 PLATFORM SELECTED*):
         * Click "Additional Library Directories" the box -> Edit -> and add `<freeglut download folder>\freeglut\lib\`. Click OK and then Apply.
-        * Change the Platform (at the top of the properties window) to x64, and repeat, EXCEPT go into the x64 folder this time.
+        * Change the Platform (at the top of the properties window) to x64, and repeat, EXCEPT go into the x64 folder this time: `<freeglut download folder>\freeglut\lib\x64\`.
         * It should look something like this for x64:
         ![Libs](AddLibDir.PNG)
         * Close the properties window.
@@ -108,24 +111,26 @@ int main(int argc, char** argv)
         * It should NOT look like this:
         ![dll](dll1.PNG)
         * Select that dll, right click, and select Properties.
-        * Change Platform at the top of this window to Win32! Change "Exclude From Build" to No, AND "Content" to Yes. Click Apply.
-        * While editing the properties this file, Change the platform to x64. Change "Excluded From Build" to Yes. This hides the 32bit dll from the 64bit configuration.
+        * Change Platform at the top of this window to Win32! Change "Exclude From Build" to No, AND "Content" to Yes, AND "Item Type" to Copy file. Click Apply.
+        * While editing the properties this file, Change the platform to x64. Change "Excluded From Build" to Yes. This hides the 32bit dll from the 64bit build/compile configuration.
         * Close the Properties window, and at the top of the VisualStudio screen, next to the "Debug" or Play button dropdown, change the build to x64. There should be a disabled icon on that dll.
 
     7. One last time...
         * Go to `<freeglut download folder>\freeglut\bin\x64`, and drag this DIFFERENT dll file over the project file like you did before for the above instructions.
         * Highlight it (The one that you DID NOT JUST DISABLE), then right click, and select properties.
         * At the top of this properties window, select platform "Win32". Change "Excluded From Build" to Yes. Click Apply.
-        * Change the platform back to x64. Change "Excluded From Build" to No, AND "Content" to Yes. Click apply.
-
-    8.
+        * Change the platform back to x64. Change "Excluded From Build" to No, AND "Content" to Yes, AND "Item Type" to Copy file. Click apply.
 
 5. Test it out
-        * When you change between x64 and x86 at the top, the two different DLL's should toggle, one will always be disabled, and the other will be enabled
-        * Run the test code on x86, and again with x64 selected. Both should show a triangle in the screen.
+    * When you change between x64 and x86 at the top, the two different DLL's should toggle, one will always be disabled, and the other will be enabled
+    * Run the test code on x86, and again with x64 selected. Both should show a triangle in the screen.
 
 
 ## Miscellaneous
+
+Instructions for Ubuntu that get this test working:
+http://www.codebind.com/linux-tutorials/install-opengl-ubuntu-linux/
+
 Some of these links were helpful, but some wanted to install GLEW or use bad strategies to get the CLASSPATH items configured.
 https://www.quora.com/How-do-I-include-header-files-in-visual-C++-to-a-given-source-file
 https://www.absingh.com/opengl/
@@ -133,6 +138,6 @@ http://www.codebind.com/linux-tutorials/install-opengl-ubuntu-linux/
 
 * There might be fewer items needed to select during the install of VisualStudio, which would make it easier on hard drive space.
 
-* It is also okay to copy the FreeGLUT items into your project, it is just complicated to explain how to do that outside of VisualStudio
+* There might be a way to follow these steps, and then click project -> Export Template -> Export Project Template. Unfortunately, it does not clone the freeglut.lib files over, so that needs looked into.
 
-* *I also have this working on Ubuntu in VSCode. Reach out if you would like that tutorial too!*
+* It is also okay to copy the FreeGLUT items into your project, it is just complicated to explain how to do that outside of VisualStudio.
